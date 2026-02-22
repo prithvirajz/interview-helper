@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interview Copilot</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 340px;
+            min-height: 480px;
+            background: #0a0a0f;
+            color: #f0f0f5;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #7c5cff, #5c8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #606070;
+            margin-bottom: 16px;
+        }
+
+        .section {
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #7c5cff;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            background: #12121a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #f0f0f5;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #7c5cff;
+        }
+
+        textarea {
+            min-height: 55px;
+            resize: vertical;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select option {
+            background: #12121a;
+            color: #f0f0f5;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #7c5cff, #5c8cff);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .status {
+            text-align: center;
+            padding: 8px;
+            font-size: 11px;
+            color: #4ade80;
+            margin-top: 8px;
+        }
+
+        .info {
+            font-size: 11px;
+            color: #a0a0b0;
+            margin-top: 12px;
+            padding: 10px;
+            background: rgba(124, 92, 255, 0.1);
+            border-radius: 8px;
+            line-height: 1.5;
+        }
+
+        .info strong {
+            color: #7c5cff;
+        }
+
+        .warning {
+            font-size: 11px;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+            padding: 6px 8px;
+            border-radius: 6px;
+            margin-top: 6px;
+        }
+
+        .warning a {
+            color: #7c5cff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎤 Interview Copilot</h1>
+    <p class="subtitle">AI-powered interview assistant</p>
+
+    <div class="section">
+        <div class="section-title">OpenRouter API Key</div>
+        <input type="password" id="apiKey" placeholder="sk-or-v1-...">
+    </div>
+
+    <div class="section">
+        <div class="section-title">Groq API Key (for transcription)</div>
+        <input type="password" id="groqKey" placeholder="gsk_...">
+        <div class="warning">Free at <a href="https://console.groq.com" target="_blank">console.groq.com</a></div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">LLM Model</div>
+        <select id="model">
+            <option value="google/gemini-2.0-flash-001">Gemini 2.0 Flash (Fast)</option>
+            <option value="google/gemini-2.0-pro-exp-02-05:free">Gemini 2.0 Pro (Free)</option>
+            <option value="anthropic/claude-3.5-sonnet">Claude 3.5 Sonnet</option>
+            <option value="anthropic/claude-3-haiku">Claude 3 Haiku (Fast)</option>
+            <option value="openai/gpt-4o">GPT-4o</option>
+            <option value="openai/gpt-4o-mini">GPT-4o Mini (Fast)</option>
+            <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
+            <option value="deepseek/deepseek-r1">DeepSeek R1</option>
+            <option value="deepseek/deepseek-chat">DeepSeek Chat</option>
+            <option value="mistralai/mistral-large">Mistral Large</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Your Resume</div>
+        <textarea id="resume" placeholder="Paste resume..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Job Description</div>
+        <textarea id="jobDesc" placeholder="Paste job description..."></textarea>
+    </div>
+
+    <button class="btn" id="saveBtn">Save Settings</button>
+    <div class="status" id="status"></div>
+
+    <div class="info">
+        <strong>Usage:</strong> Go to Meet/Zoom → Click 🎤 → Capture Audio → Select tab with "Share tab audio" checked
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
